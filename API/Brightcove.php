@@ -2,7 +2,7 @@
 
 namespace LCM\BrightcoveBundle\API;
 
-use BCAPI as BrightcoveBase;
+use BCMAPI as BrightcoveBase;
 
 /**
  * Wrapper for the brightcove api class
