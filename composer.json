@@ -13,7 +13,7 @@
     "MIT"
   ],
   "require" : {
-    "brightcove/mapi": "dev-master"
+    "brightcove/mapi": "@dev"
   },
   "autoload" : {
     "psr-0" : {
