@@ -13,7 +13,7 @@
     "MIT"
   ],
   "require" : {
-    "brightcove/mapi": "@dev"
+    "brightcove/api": "@dev"
   },
   "autoload" : {
     "psr-0" : {
@@ -21,7 +21,22 @@
     }
   },
   "target-dir" : "LCM/BrightcoveBundle",
-  "repositories" : [{}],
+  "repositories" : [
+    {
+      "type" : "package",
+      "package" : {
+        "name" : "brightcove/api",
+        "version" : "1.0",
+        "source" : {
+          "url" : "https://github.com/brightcove/PHP-API-Wrapper.git",
+          "type" : "git"
+        },
+        "autoload" : {
+          "classmap" : ["*.php"]
+        }
+      }
+    }
+  ],
   "extra" : {
     "branch-alias" : {
       "dev-master" : "1.0.x-dev"

@@ -5,18 +5,7 @@
   xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
   <services>
-    <service id="lcm_brightcove" class="LCM\BrightcoveBundle\API\Brightcove">
-      <argument>%lcm_brightcove.token.read%</argument>
-      <argument>%lcm_brightcove.token.write%</argument>
-    </service>
 
-    <service id="lcm_brightcove.cache" class="BCMAPICache">
-      <argument>%lcm_brightcove.cache.type%</argument>
-      <argument>%lcm_brightcove.cache.time%</argument>
-      <argument>%lcm_brightcove.cache.location%</argument>
-      <argument>%lcm_brightcove.cache.extension%</argument>
-      <argument>%lcm_brightcove.cache.port%</argument>
-    </service>
   </services>
 
 </container>
