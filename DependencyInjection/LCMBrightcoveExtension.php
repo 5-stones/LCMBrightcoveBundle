@@ -22,16 +22,14 @@ class LCMBrightcoveExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $container->setAlias('lcm_brightcove.token.read', $config['token']['read']);
-        $container->setAlias('lcm_brightcove.token.write', $config['token']['write']);
+        $container->setParameter('lcm_brightcove.token.read', $config['token']['read']);
+        $container->setParameter('lcm_brightcove.token.write', $config['token']['write']);
 
-        if(isset($config['cache'])) {
-            $config['cache']['type'] ? $container->setAlias('lcm_brightcove.cache.type', $config['cache']['type']) : null;
-            $config['cache']['time'] ? $container->setAlias('lcm_brightcove.cache.time', $config['cache']['time']) : null;
-            $config['cache']['location'] ? $container->setAlias('lcm_brightcove.cache.location', $config['cache']['location']) : null;
-            $config['cache']['extension'] ? $container->setAlias('lcm_brightcove.cache.extension', $config['cache']['extension']) : null;
-            $config['cache']['port'] ? $container->setAlias('lcm_brightcove.cache.port', $config['cache']['port']) : null;
-        }
+        $container->setParameter('lcm_brightcove.cache.type', isset($config['cache']) && $config['cache']['type'] ? $config['cache']['type'] : null);
+        $container->setParameter('lcm_brightcove.cache.time', isset($config['cache']) && $config['cache']['time'] ? $config['cache']['time'] : null);
+        $container->setParameter('lcm_brightcove.cache.location', isset($config['cache']) && $config['cache']['location'] ? $config['cache']['location'] : null);
+        $container->setParameter('lcm_brightcove.cache.extension', isset($config['cache']) && $config['cache']['extension'] ? $config['cache']['extension'] : null);
+        $container->setParameter('lcm_brightcove.cache.port', isset($config['cache']) && $config['cache']['port'] ? $config['cache']['port'] : null);
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
