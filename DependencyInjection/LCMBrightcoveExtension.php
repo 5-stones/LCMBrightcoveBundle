@@ -33,5 +33,31 @@ class LCMBrightcoveExtension extends Extension
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
+
+        $this->configureService($config, $container);
+    }
+
+    /**
+     * Finish configuring the BC service
+     */
+    private function configureService($config, $container) {
+        unset(
+            $config['token'],
+            $config['cache']
+        );
+
+        $bc = $container->get('lcm_brightcove');
+
+        // Set extra config
+        foreach($config as $key => $value) {
+
+            if(!is_array($value)) {
+                $bc->__set($key, $value);
+            } else {
+                foreach($value as $k => $v) {
+                    $bc->__set($key.'_'.$k, $v);
+                }
+            }
+        }
     }
 }

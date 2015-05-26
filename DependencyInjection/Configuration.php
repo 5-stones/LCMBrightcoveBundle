@@ -37,6 +37,26 @@ class Configuration implements ConfigurationInterface
             ->scalarNode('port')->defaultNull()->end()
           ->end()
         ->end() // cache
+        ->arrayNode('timeout')
+          ->children()
+            ->integerNode('attempts')->defaultNull()->end()
+            ->integerNode('current')->defaultNull()->end()
+            ->integerNode('delay')->defaultNull()->end()
+            ->booleanNode('retry')->defaultNull()->end()
+          ->end()
+        ->end() // timeout
+        ->arrayNode('url')
+          ->children()
+            ->scalarNode('read')->defaultNull()->end()
+            ->scalarNode('write')->defaultNull()->end()
+          ->end()
+        ->end() // url
+        ->integerNode('api_calls')->defaultNull()->end()
+        ->booleanNode('bit32')->defaultNull()->end()
+        ->integerNode('media_delivery')->defaultNull()->end()
+        ->booleanNode('secure')->defaultNull()->end()
+        ->booleanNode('show_notices')->defaultNull()->end()
+        ->integerNode('valid_types')->defaultNull()->end()
       ->end();
 
     return $treeBuilder;
