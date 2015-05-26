@@ -1,0 +1,30 @@
+{
+  "name" : "lcm/brightcove-bundle",
+  "description" : "Symfony LCMBrightcoveBundle",
+  "type" : "symfony-bundle",
+  "authors" : [{
+    "name" : "Jacob Spizziri",
+    "email" : "jacob.spizziri@gmail.com"
+  }],
+  "keywords" : [
+    "brightcove"
+  ],
+  "license" : [
+    "MIT"
+  ],
+  "require" : {
+    "brightcove/mapi": "dev-master"
+  },
+  "autoload" : {
+    "psr-0" : {
+      "LCM\\BrightcoveBundle" : ""
+    }
+  },
+  "target-dir" : "LCM/BrightcoveBundle",
+  "repositories" : [{}],
+  "extra" : {
+    "branch-alias" : {
+      "dev-master" : "1.0.x-dev"
+    }
+  }
+}
