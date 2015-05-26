@@ -12,18 +12,33 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  */
 class Configuration implements ConfigurationInterface
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getConfigTreeBuilder()
-    {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('lcm_brightcove');
+  /**
+   * {@inheritdoc}
+   */
+  public function getConfigTreeBuilder()
+  {
+    $treeBuilder = new TreeBuilder();
+    $rootNode = $treeBuilder->root('lcm_brightcove');
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+    $rootNode
+      ->children()
+        ->arrayNode('token')
+          ->children()
+            ->scalarNode('read')->end()
+            ->scalarNode('write')->end()
+          ->end()
+        ->end() // token
+        ->arrayNode('cache')
+          ->children()
+            ->scalarNode('type')->defaultNull()->end()
+            ->scalarNode('time')->defaultNull()->end()
+            ->scalarNode('location')->defaultValue('%kernel.cache_dir%/lcm_brightcove')->end()
+            ->scalarNode('extension')->defaultNull()->end()
+            ->scalarNode('port')->defaultNull()->end()
+          ->end()
+        ->end() // cache
+      ->end();
 
-        return $treeBuilder;
-    }
+    return $treeBuilder;
+  }
 }

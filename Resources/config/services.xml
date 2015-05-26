@@ -1,16 +1,22 @@
 <?xml version="1.0" ?>
 
 <container xmlns="http://symfony.com/schema/dic/services"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <!--
-    <services>
-        <service id="lcm_brightcove.example" class="LCM\BrightcoveBundle\Example">
-            <argument type="service" id="service_id" />
-            <argument>plain_value</argument>
-            <argument>%parameter_name%</argument>
-        </service>
-    </services>
-    -->
+  <services>
+    <service id="lcm_brightcove" class="BCMAPI">
+      <argument>%lcm_brightcove.token.read%</argument>
+      <argument>%lcm_brightcove.token.write%</argument>
+    </service>
+
+    <service id="lcm_brightcove.cache" class="BCMAPICache">
+      <argument>%lcm_brightcove.cache.type%</argument>
+      <argument>%lcm_brightcove.cache.time%</argument>
+      <argument>%lcm_brightcove.cache.location%</argument>
+      <argument>%lcm_brightcove.cache.extension%</argument>
+      <argument>%lcm_brightcove.cache.port%</argument>
+    </service>
+  </services>
+
 </container>
