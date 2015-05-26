@@ -5,7 +5,7 @@
   xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
   <services>
-    <service id="lcm_brightcove" class="BCMAPI">
+    <service id="lcm_brightcove" class="LCM\BrightcoveBundle\API\Brightcove">
       <argument>%lcm_brightcove.token.read%</argument>
       <argument>%lcm_brightcove.token.write%</argument>
     </service>
