@@ -24,8 +24,8 @@ class Configuration implements ConfigurationInterface
       ->children()
         ->arrayNode('token')
           ->children()
-            ->scalarNode('read')->end()
-            ->scalarNode('write')->end()
+            ->scalarNode('read')->isRequired()->cannotBeEmpty()->end()
+            ->scalarNode('write')->isRequired()->cannotBeEmpty()->end()
           ->end()
         ->end() // token
         ->arrayNode('cache')
