@@ -23,19 +23,8 @@
   "target-dir" : "LCM/BrightcoveBundle",
   "repositories" : [
     {
-      "type" : "package",
-      "package" : {
-        "name" : "brightcove/api",
-        "version" : "1.0",
-        "source" : {
-          "url" : "https://github.com/brightcove/PHP-API-Wrapper.git",
-          "type" : "git"
-          "reference" : "master"
-        },
-        "autoload" : {
-          "classmap" : [""]
-        }
-      }
+      "type" : "git",
+      "url" : "https://github.com/lighthousecatholicmedia/PHP-API-Wrapper.git"
     }
   ],
   "extra" : {
