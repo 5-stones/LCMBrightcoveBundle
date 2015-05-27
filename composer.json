@@ -30,9 +30,10 @@
         "source" : {
           "url" : "https://github.com/brightcove/PHP-API-Wrapper.git",
           "type" : "git"
+          "reference" : "master"
         },
         "autoload" : {
-          "classmap" : ["*.php"]
+          "classmap" : [""]
         }
       }
     }
