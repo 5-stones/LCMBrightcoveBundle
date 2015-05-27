@@ -6,7 +6,9 @@
 
   <parameters>
     <parameter key="brightcove.api.client.class">Brightcove\API\Client</parameter>
-    <parameter key="brightcove.client.class">Brightcove\CMS\Client</parameter>
+    <parameter key="brightcove.api.cms.class">Brightcove\API\CMS</parameter>
+    <parameter key="brightcove.api.di.class">Brightcove\API\DI</parameter>
+    <parameter key="brightcove.api.pm.class">Brightcove\API\PM</parameter>
   </parameters>
 
   <services>
@@ -16,7 +18,17 @@
       <argument>%lcm_brightcove.client.secret%</argument>
     </service>
 
-    <service id="brightcove.client" class="%brightcove.client.class%">
+    <service id="brightcove.api.cms" class="%brightcove.api.cms.class%">
+      <argument type="service" id="brightcove.api.client" />
+      <argument>%lcm_brightcove.account.id%</argument>
+    </service>
+
+    <service id="brightcove.api.di" class="%brightcove.api.di.class%">
+      <argument type="service" id="brightcove.api.client" />
+      <argument>%lcm_brightcove.account.id%</argument>
+    </service>
+
+    <service id="brightcove.api.pm" class="%brightcove.api.pm.class%">
       <argument type="service" id="brightcove.api.client" />
       <argument>%lcm_brightcove.account.id%</argument>
     </service>
