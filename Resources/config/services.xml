@@ -4,8 +4,22 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-  <!--<services>
+  <parameters>
+    <parameter key="brightcove.api.client.class">Brightcove\API\Client</parameter>
+    <parameter key="brightcove.client.class">Brightcove\CMS\Client</parameter>
+  </parameters>
 
-  </services>-->
+  <services>
+    <service id="brightcove.api.client" class="%brightcove.api.client.class%">
+      <factory class="%brightcove.api.client.class%" method="authorize" />
+      <argument>%lcm_brightcove.client.id%</argument>
+      <argument>%lcm_brightcove.client.secret%</argument>
+    </service>
+
+    <service id="brightcove.client" class="%brightcove.client.class%">
+      <argument type="service" id="brightcove.api.client" />
+      <argument>%lcm_brightcove.account.id%</argument>
+    </service>
+  </services>
 
 </container>

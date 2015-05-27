@@ -22,41 +22,17 @@ class Configuration implements ConfigurationInterface
 
     $rootNode
       ->children()
-        ->arrayNode('token')
+        ->arrayNode('account')
           ->children()
-            ->scalarNode('read')->isRequired()->cannotBeEmpty()->end()
-            ->scalarNode('write')->isRequired()->cannotBeEmpty()->end()
+            ->scalarNode('id')->isRequired()->cannotBeEmpty()->end()
           ->end()
-        ->end() // token
-        ->arrayNode('cache')
+        ->end() // account
+        ->arrayNode('client')
           ->children()
-            ->scalarNode('type')->defaultNull()->end()
-            ->scalarNode('time')->defaultNull()->end()
-            ->scalarNode('location')->defaultValue('%kernel.cache_dir%/lcm_brightcove')->end()
-            ->scalarNode('extension')->defaultNull()->end()
-            ->scalarNode('port')->defaultNull()->end()
+            ->scalarNode('id')->isRequired()->cannotBeEmpty()->end()
+            ->scalarNode('secret')->isRequired()->cannotBeEmpty()->end()
           ->end()
-        ->end() // cache
-        ->arrayNode('timeout')
-          ->children()
-            ->integerNode('attempts')->defaultNull()->end()
-            ->integerNode('current')->defaultNull()->end()
-            ->integerNode('delay')->defaultNull()->end()
-            ->booleanNode('retry')->defaultNull()->end()
-          ->end()
-        ->end() // timeout
-        ->arrayNode('url')
-          ->children()
-            ->scalarNode('read')->defaultNull()->end()
-            ->scalarNode('write')->defaultNull()->end()
-          ->end()
-        ->end() // url
-        ->integerNode('api_calls')->defaultNull()->end()
-        ->booleanNode('bit32')->defaultNull()->end()
-        ->integerNode('media_delivery')->defaultNull()->end()
-        ->booleanNode('secure')->defaultNull()->end()
-        ->booleanNode('show_notices')->defaultNull()->end()
-        ->integerNode('valid_types')->defaultNull()->end()
+        ->end() // client
       ->end();
 
     return $treeBuilder;
